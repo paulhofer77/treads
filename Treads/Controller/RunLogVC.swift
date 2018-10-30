@@ -1,5 +1,5 @@
 //
-//  LogVC.swift
+//  RunLogVC.swift
 //  Treads
 //
 //  Created by Paul Hofer on 30.10.18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogVC: UIViewController {
+class RunLogVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
