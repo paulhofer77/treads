@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  LogVC.swift
 //  Treads
 //
 //  Created by Paul Hofer on 30.10.18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class LogVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
