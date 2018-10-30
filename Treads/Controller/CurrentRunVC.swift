@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class CurrentRunVC: LocationVC {
 
@@ -17,6 +18,12 @@ class CurrentRunVC: LocationVC {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var swipeBackgroundImageView: UIImageView!
     @IBOutlet weak var sliderImageView: UIImageView!
+    @IBOutlet weak var pauseButton: UIButton!
+    
+    //    MARK: - Variables
+    var startLocation: CLLocation!
+    var lastLocation: CLLocation!
+    var runDistance: Double = 0.0
     
     //    MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -28,6 +35,29 @@ class CurrentRunVC: LocationVC {
         swipeGesture.delegate = self as? UIGestureRecognizerDelegate
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        locationManager?.delegate = self
+        locationManager?.distanceFilter = 10
+        startRun()
+        
+    }
+    
+    
+    //    MARK: - Start & End Run Methods
+    func startRun(){
+        locationManager?.startUpdatingLocation()
+    }
+    
+    func endRun(){
+        locationManager?.stopUpdatingLocation()
+    }
+    
+    @IBAction func pauseButtonPressed(_ sender: UIButton) {
+    }
+    
+    
+    
+    //    MARK: - Swipe Function to End Run
     @objc func endRunSwiped (sender: UIPanGestureRecognizer) {
         
         let minAdjust: CGFloat = 80
@@ -56,7 +86,25 @@ class CurrentRunVC: LocationVC {
         
     }
     
-    
-    
+}
 
+extension CurrentRunVC: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            checkLocationAuthStatus()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        if startLocation == nil {
+            startLocation = locations.first
+        } else if let location = locations.last {
+            runDistance += lastLocation.distance(from: location)
+            distanceLabel.text = "\(runDistance)"
+        }
+        lastLocation = locations.last
+    }
+    
 }
