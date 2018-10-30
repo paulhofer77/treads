@@ -13,7 +13,8 @@
 		C618D88C2188BE06009F2EF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C618D88A2188BE06009F2EF2 /* Main.storyboard */; };
 		C618D88E2188BE09009F2EF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C618D88D2188BE09009F2EF2 /* Assets.xcassets */; };
 		C618D8912188BE09009F2EF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C618D88F2188BE09009F2EF2 /* LaunchScreen.storyboard */; };
-		C618D89F2188D08E009F2EF2 /* OnRunVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C618D89E2188D08E009F2EF2 /* OnRunVC.swift */; };
+		C618D89F2188D08E009F2EF2 /* CurrentRunVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C618D89E2188D08E009F2EF2 /* CurrentRunVC.swift */; };
+		C618D8A121891939009F2EF2 /* LocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C618D8A021891939009F2EF2 /* LocationVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +26,8 @@
 		C618D88D2188BE09009F2EF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C618D8902188BE09009F2EF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C618D8922188BE09009F2EF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C618D89E2188D08E009F2EF2 /* OnRunVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnRunVC.swift; sourceTree = "<group>"; };
+		C618D89E2188D08E009F2EF2 /* CurrentRunVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRunVC.swift; sourceTree = "<group>"; };
+		C618D8A021891939009F2EF2 /* LocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +99,10 @@
 		C618D89B2188C047009F2EF2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C618D8A021891939009F2EF2 /* LocationVC.swift */,
 				C618D8862188BE06009F2EF2 /* BeginRunVC.swift */,
 				C618D8882188BE06009F2EF2 /* RunLogVC.swift */,
-				C618D89E2188D08E009F2EF2 /* OnRunVC.swift */,
+				C618D89E2188D08E009F2EF2 /* CurrentRunVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -189,10 +192,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C618D8A121891939009F2EF2 /* LocationVC.swift in Sources */,
 				C618D8892188BE06009F2EF2 /* RunLogVC.swift in Sources */,
 				C618D8852188BE06009F2EF2 /* AppDelegate.swift in Sources */,
 				C618D8872188BE06009F2EF2 /* BeginRunVC.swift in Sources */,
-				C618D89F2188D08E009F2EF2 /* OnRunVC.swift in Sources */,
+				C618D89F2188D08E009F2EF2 /* CurrentRunVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

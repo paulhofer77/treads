@@ -7,14 +7,50 @@
 //
 
 import UIKit
+import MapKit
 
-class BeginRunVC: UIViewController {
+class BeginRunVC: LocationVC {
 
+    //    MARK: - Outlets
+    @IBOutlet weak var mapView: MKMapView!
+    
+    //    MARK: Lifecycle Methx
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        checkLocationAuthStatus()
+        mapView.delegate = self
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        locationManager?.delegate = self
+        locationManager?.startUpdatingLocation()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        locationManager?.stopUpdatingLocation()
+    }
+    
+    
+    
+    //    MARK: - Pressed Button Actions
+    @IBAction func locationCenterButtonPressed(_ sender: Any) {
+    }
+    
+}
 
+
+extension BeginRunVC: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            checkLocationAuthStatus()
+            mapView.showsUserLocation = true
+            mapView.userTrackingMode = .follow
+        }
+    }
+    
 }
 

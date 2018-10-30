@@ -8,8 +8,14 @@
 
 import UIKit
 
-class OnRunVC: UIViewController {
+class CurrentRunVC: UIViewController {
 
+    //    MARK: - Outlines
+    
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var paceLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

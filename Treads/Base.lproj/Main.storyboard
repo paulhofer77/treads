@@ -32,10 +32,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vzE-5r-5zx">
                                 <rect key="frame" x="152" y="503" width="71" height="71"/>
                                 <state key="normal" image="startRunningButton"/>
+                                <connections>
+                                    <segue destination="TWC-5T-D3c" kind="show" identifier="segueToOnRunVC" id="PcB-6y-vL3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9a-Cm-wSv">
                                 <rect key="frame" x="311" y="359" width="58" height="58"/>
                                 <state key="normal" image="centerNavButton"/>
+                                <connections>
+                                    <action selector="locationCenterButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="r0g-Kt-xwX"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Running" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ySS-4g-HO3">
                                 <rect key="frame" x="128.5" y="586" width="118" height="24"/>
@@ -66,6 +72,9 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Run" image="tabbar-runIconGray" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="mapView" destination="gZm-Zt-oQy" id="c4P-aj-LLI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -183,10 +192,10 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
         </scene>
-        <!--On RunVC-->
+        <!--Current RunVC-->
         <scene sceneID="dE2-0B-2qv">
             <objects>
-                <viewController id="TWC-5T-D3c" customClass="OnRunVC" customModule="Treads" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TWC-5T-D3c" customClass="CurrentRunVC" customModule="Treads" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Mv-QQ-7Al">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -307,10 +316,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qhO-7n-W50"/>
                     </view>
+                    <connections>
+                        <outlet property="distanceLabel" destination="5ll-Dj-zRF" id="ea3-c1-HRn"/>
+                        <outlet property="durationLabel" destination="OQK-jA-Qub" id="g8e-11-HVt"/>
+                        <outlet property="paceLabel" destination="Xz0-u4-IAG" id="USS-1g-I7n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0NM-7G-SW6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1512.8" y="-320.68965517241384"/>
+            <point key="canvasLocation" x="1471" y="-321"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
