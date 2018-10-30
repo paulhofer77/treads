@@ -41,6 +41,7 @@ class BeginRunVC: LocationVC {
     
 }
 
+//MARK: - Extension for CLLocationManagerDelegate
 
 extension BeginRunVC: CLLocationManagerDelegate {
     

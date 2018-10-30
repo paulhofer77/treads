@@ -320,6 +320,8 @@
                         <outlet property="distanceLabel" destination="5ll-Dj-zRF" id="ea3-c1-HRn"/>
                         <outlet property="durationLabel" destination="OQK-jA-Qub" id="g8e-11-HVt"/>
                         <outlet property="paceLabel" destination="Xz0-u4-IAG" id="USS-1g-I7n"/>
+                        <outlet property="sliderImageView" destination="joX-2A-CZy" id="KNZ-1o-CxK"/>
+                        <outlet property="swipeBackgroundImageView" destination="t4w-eM-21e" id="VS7-St-UPN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0NM-7G-SW6" userLabel="First Responder" sceneMemberID="firstResponder"/>
