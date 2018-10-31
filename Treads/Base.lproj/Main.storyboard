@@ -279,8 +279,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8o-nX-hMo">
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8o-nX-hMo">
                                 <rect key="frame" x="249" y="552" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="TO3-Ak-Gl5"/>
+                                    <constraint firstAttribute="height" constant="75" id="t8q-9c-hBD"/>
+                                </constraints>
                                 <state key="normal" image="pauseButton"/>
                                 <connections>
                                     <action selector="pauseButtonPressed:" destination="TWC-5T-D3c" eventType="touchUpInside" id="Dc4-Tx-zNl"/>
@@ -293,7 +297,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="t4w-eM-21e" firstAttribute="centerX" secondItem="9Mv-QQ-7Al" secondAttribute="centerX" constant="-30" id="0qS-sR-kwY"/>
-                            <constraint firstItem="S8o-nX-hMo" firstAttribute="leading" secondItem="t4w-eM-21e" secondAttribute="trailing" constant="-24.5" id="4Xm-yG-h9X"/>
                             <constraint firstItem="dbj-8p-XTK" firstAttribute="trailing" secondItem="qhO-7n-W50" secondAttribute="trailing" id="9Mw-Du-UDv"/>
                             <constraint firstItem="hEN-0e-zeB" firstAttribute="top" secondItem="OQK-jA-Qub" secondAttribute="bottom" constant="45" id="EJv-sH-kwW"/>
                             <constraint firstItem="hEN-0e-zeB" firstAttribute="leading" secondItem="qhO-7n-W50" secondAttribute="leading" id="GN9-ZK-n2C"/>
@@ -304,6 +307,7 @@
                             <constraint firstItem="nnH-43-RzH" firstAttribute="centerY" secondItem="hEN-0e-zeB" secondAttribute="centerY" id="Ul4-cz-19H"/>
                             <constraint firstItem="S8o-nX-hMo" firstAttribute="centerY" secondItem="t4w-eM-21e" secondAttribute="centerY" id="VQm-fW-cp1"/>
                             <constraint firstItem="naY-5G-8cA" firstAttribute="centerY" secondItem="t4w-eM-21e" secondAttribute="centerY" id="VSZ-U1-9u1"/>
+                            <constraint firstItem="S8o-nX-hMo" firstAttribute="leading" secondItem="naY-5G-8cA" secondAttribute="trailing" constant="27.5" id="aej-bc-DaD"/>
                             <constraint firstItem="t4w-eM-21e" firstAttribute="top" secondItem="NXJ-43-hCQ" secondAttribute="bottom" constant="80" id="bhZ-1V-L6I"/>
                             <constraint firstItem="dbj-8p-XTK" firstAttribute="bottom" secondItem="qhO-7n-W50" secondAttribute="bottom" id="cWM-0P-Cb2"/>
                             <constraint firstItem="WS1-SU-wlv" firstAttribute="top" secondItem="qhO-7n-W50" secondAttribute="top" constant="8" id="co0-f8-7uX"/>
