@@ -11,8 +11,17 @@ import MapKit
 
 class BeginRunVC: LocationVC {
 
+    //    Mark: - Variables
+    
     //    MARK: - Outlets
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var lastRunCloseButton: UIButton!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var paceLabel: UILabel!
+    @IBOutlet weak var lastRunBackgroundView: UIView!
+    @IBOutlet weak var lastRunStackView: UIStackView!
+    
     
     //    MARK: Lifecycle Methx
     
@@ -22,17 +31,32 @@ class BeginRunVC: LocationVC {
         checkLocationAuthStatus()
         mapView.delegate = self
         
-        print(Run.getAllRuns())
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         locationManager?.delegate = self
         locationManager?.startUpdatingLocation()
+        getLastRun()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         locationManager?.stopUpdatingLocation()
+    }
+    
+    //    Mark: - Functions/Methods
+    
+    func getLastRun() {
+        guard let lastRun = Run.getAllRuns()?.first else {
+            lastRunStackView.isHidden = false
+            lastRunBackgroundView.isHidden = false
+            lastRunCloseButton.isHidden = false
+            return
+        }
+        
+        paceLabel.text = lastRun.pace.formatTimeDurationToString()
+        distanceLabel.text = "\(lastRun.distance.metersToMiles(decimalPlaces: 2))km"
+        durationLabel.text = lastRun.duration.formatTimeDurationToString()
+        
     }
     
     
@@ -40,6 +64,15 @@ class BeginRunVC: LocationVC {
     //    MARK: - Pressed Button Actions
     @IBAction func locationCenterButtonPressed(_ sender: Any) {
     }
+    
+    @IBAction func lastRunCloseButtonPressed(_ sender: Any) {
+        
+        lastRunStackView.isHidden = false
+        lastRunBackgroundView.isHidden = false
+        lastRunCloseButton.isHidden = false
+        
+    }
+    
     
 }
 
