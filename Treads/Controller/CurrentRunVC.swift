@@ -102,7 +102,8 @@ extension CurrentRunVC: CLLocationManagerDelegate {
             startLocation = locations.first
         } else if let location = locations.last {
             runDistance += lastLocation.distance(from: location)
-            distanceLabel.text = "\(runDistance)"
+//            here i have to change meters into km
+            distanceLabel.text = "\(runDistance.meterToKm(decimalPlaces: 4))"
         }
         lastLocation = locations.last
     }
