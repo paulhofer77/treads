@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import RealmSwift
 
 class CurrentRunVC: LocationVC {
 
@@ -22,12 +23,13 @@ class CurrentRunVC: LocationVC {
     
     
     //    MARK: - Variables
-    var startLocation: CLLocation!
-    var lastLocation: CLLocation!
-    var runDistance: Double = 0.0
-    var counter: Int = 0
-    var timer = Timer()
-    var pace: Int = 0
+    fileprivate var startLocation: CLLocation!
+    fileprivate var lastLocation: CLLocation!
+    fileprivate var runDistance: Double = 0.0
+    fileprivate var counter: Int = 0
+    fileprivate var timer = Timer()
+    fileprivate var pace: Int = 0
+    fileprivate var coordinateLocations = List<Location>()
     
     //    MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -64,7 +66,7 @@ class CurrentRunVC: LocationVC {
     
     func endRun(){
         locationManager?.stopUpdatingLocation()
-        Run.addRunToRealm(pace: pace, distance: runDistance, duration: counter)
+        Run.addRunToRealm(pace: pace, distance: runDistance, duration: counter, locations: coordinateLocations)
     }
     
     func startTimer() {
@@ -139,7 +141,8 @@ extension CurrentRunVC: CLLocationManagerDelegate {
             startLocation = locations.first
         } else if let location = locations.last {
             runDistance += lastLocation.distance(from: location)
-//            here i have to change meters into km
+            let newLocation = Location(latitude: Double(lastLocation.coordinate.latitude), longitude: Double(lastLocation.coordinate.longitude))
+            coordinateLocations.insert(newLocation, at: 0)
             distanceLabel.text = "\(runDistance.meterToKm(decimalPlaces: 3))"
             if counter > 0 && runDistance > 0 {
                 paceLabel.text = calculatePace(time: counter, km: runDistance.meterToKm(decimalPlaces: 3))

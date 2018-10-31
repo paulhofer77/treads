@@ -18,6 +18,8 @@ class Run: Object {
     @objc dynamic public private(set) var distance: Double = 0.0
     @objc dynamic public private(set) var duration: Int = 0
     
+    public private(set) var locations = List<Location>()
+    
 //    we need a primary key which is unique
     override class func primaryKey () -> String {
         return "id"
@@ -27,20 +29,21 @@ class Run: Object {
         return ["pace", "date", "duration"]
     }
     
-    convenience init(pace: Int, distance: Double, duration: Int) {
+    convenience init(pace: Int, distance: Double, duration: Int, locations: List<Location>) {
         self.init()
         self.id = UUID().uuidString.lowercased()
         self.date = NSDate()
         self.pace = pace
         self.distance = distance
         self.duration = duration
+        self.locations = locations
     }
     
-    static func addRunToRealm(pace: Int, distance: Double, duration: Int) {
+    static func addRunToRealm(pace: Int, distance: Double, duration: Int, locations: List<Location>) {
         REALM_QUEUE.sync {
-            let newRun = Run.init(pace: pace, distance: distance, duration: duration)
+            let newRun = Run.init(pace: pace, distance: distance, duration: duration, locations: locations)
             do {
-                let realm = try Realm()
+                let realm = try Realm(configuration: RealmConfig.runDataConfig)
                 try realm.write {
                     realm.add(newRun)
                     try realm.commitWrite()
@@ -55,7 +58,7 @@ class Run: Object {
     static func getAllRuns() -> Results<Run>? {
         
         do {
-            let realm = try Realm()
+            let realm = try Realm(configuration: RealmConfig.runDataConfig)
             var runs = realm.objects(Run.self)
             runs = runs.sorted(byKeyPath: "date", ascending: false)
             return runs
