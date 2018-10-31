@@ -20,12 +20,14 @@ class CurrentRunVC: LocationVC {
     @IBOutlet weak var sliderImageView: UIImageView!
     @IBOutlet weak var pauseButton: UIButton!
     
+    
     //    MARK: - Variables
     var startLocation: CLLocation!
     var lastLocation: CLLocation!
     var runDistance: Double = 0.0
     var counter: Int = 0
     var timer = Timer()
+    var pace: Int = 0
     
     //    MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -51,6 +53,10 @@ class CurrentRunVC: LocationVC {
         startTimer()
     }
     
+    func pauseRun(){
+        
+    }
+    
     func endRun(){
         locationManager?.stopUpdatingLocation()
     }
@@ -63,6 +69,11 @@ class CurrentRunVC: LocationVC {
     @objc func updateTimer() {
         counter += 1
         durationLabel.text = counter.formatTimeDurationToString()
+    }
+    
+    func calculatePace(time: Int, km: Double) -> String {
+        pace = Int(Double(time) / km)
+        return pace.formatTimeDurationToString()
     }
     
     
@@ -117,7 +128,10 @@ extension CurrentRunVC: CLLocationManagerDelegate {
         } else if let location = locations.last {
             runDistance += lastLocation.distance(from: location)
 //            here i have to change meters into km
-            distanceLabel.text = "\(runDistance.meterToKm(decimalPlaces: 4))"
+            distanceLabel.text = "\(runDistance.meterToKm(decimalPlaces: 3))"
+            if counter > 0 && runDistance > 0 {
+                paceLabel.text = calculatePace(time: counter, km: runDistance.meterToKm(decimalPlaces: 3))
+            }
         }
         lastLocation = locations.last
     }
