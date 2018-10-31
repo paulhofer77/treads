@@ -78,9 +78,12 @@ class BeginRunVC: LocationVC {
             coordinate.append(CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude))
         }
         mapView.userTrackingMode = .none
-        mapView.setRegion(centerMapOnPreviousRoute(locations: lastRun.locations), animated: true)
+//       it is just to show how to sort by Primary Key
+//       it is redundenat because we already got the info from lastrun above
+        guard let locations = Run.getRun(by: lastRun.id)?.locations else  {return MKPolyline() }
+        mapView.setRegion(centerMapOnPreviousRoute(locations: locations), animated: true)
         
-        return MKPolyline(coordinates: coordinate, count: lastRun.locations.count)
+        return MKPolyline(coordinates: coordinate, count: locations.count)
     }
     
     
